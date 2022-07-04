@@ -1,2 +1,0 @@
-dhcpLbl||Map DHCP Relay Label to Bridge Domain||Hui Yu||dhcpRelayP, aci_bd
-dhcpRelayP||Create User Tenant DHCP Relay Policy||Hui Yu||aci_tenant,aci_l3out
