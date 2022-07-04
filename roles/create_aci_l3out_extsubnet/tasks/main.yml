@@ -1,0 +1,10 @@
+---
+# tasks file for create_aci_l3out_extsubnet
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_aci_l3out_extsubnet
+- include_tasks: "{{repository_path}}/pre_query_aci_l3out_extsubnet.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_l3out.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_tenant.yml"
+- include_tasks: "{{repository_path}}/create_aci_l3out_extsubnet.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_l3out_extsubnet.yml"

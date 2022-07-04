@@ -1,0 +1,26 @@
+  - name: 4b Query EIGRP Interface Profile in user tenant
+    aci_rest:
+      hostname: '{{ inventory_hostname }}'
+      username: '{{ username }}'
+      password: '{{ password }}'
+      validate_certs: no
+      path: /api/node/mo/uni/tn-{{ item.tenantName }}.json?query-target=children&target-subtree-class=eigrpIfPol&query-target-filter=eq(eigrpIfPol.name,"EIGRP_IntPol")
+      method: get
+    register: query_result
+    with_items: "{{ eigrpIfPol }}"
+    delegate_to: localhost
+    #ignore_errors: yes
+
+  # - name: query result
+  #   debug:
+  #     msg: "{{item}}"
+  #   with_items: "{{query_result.results}}"
+
+
+  - name: Assert the eigrp interface profile
+    assert:
+      that:
+      - item.imdata!=[]
+      success_msg: "eigrp interface profile exists in the Fabric."
+      fail_msg: "eigrp interface profile does NOT exist in the Fabric."
+    with_items: "{{query_result.results}}"

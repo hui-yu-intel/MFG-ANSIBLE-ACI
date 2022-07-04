@@ -1,0 +1,11 @@
+---
+
+- name: Create a Snapshot Before the Change  
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+
+  roles:
+  - create_snapshot_after_change

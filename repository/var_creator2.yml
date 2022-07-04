@@ -1,0 +1,53 @@
+---
+# Script reads Excel file and converts each tab to a .csv file based on the tab name.
+# Next each .csv file is read and converted into a .yml dictionary.  Tab name is the dict name.
+# Next adittional pb_action.yml file is created to reflect the user action selection (install\backout) from Rundeck 
+# Lastly all .yml files are copied into a single final vars file in the ./vars directory.
+# Excel file is suplied by the end user via the Rundeck GUI.
+# {{ userFile }} is the file passed from Rundeck GUI.
+# {{ rdUser }} and {{ rdJob }} are internal Rundeck variables and passed from Rundeck.
+- copy:
+    src: "{{ userFile }}"
+    dest: "{{path}}/files/files_wip/var_{{ rdUser }}_{{ rdJob }}.xlsx"
+  delegate_to: localhost
+
+- name: convert user Excel file to CSV Files
+  convert: 
+    filename: "{{path}}/files/files_wip/var_{{ rdUser }}_{{ rdJob }}.xlsx"
+    filepath: "{{path}}"
+  register: result
+    
+- name: generate YML files from CSV files
+  include_tasks: ../../repository/unit_copy_tasks.yml
+  loop: "{{result.msg}}"
+
+- ansible.builtin.assemble:
+    src: "{{path}}/vars/vars_wip" 
+    regexp: 'yml$'
+    dest: "{{path}}/vars/new_test.yml"
+    delimiter: '############################################################################################################################################'
+
+
+
+# # tasks file for test-role-1
+# - name: copying task 1 phase1_var_creator
+#   copy: 
+#     src: "test.xlsx"
+#     dest: ./files/files_wip/new_test.xlsx
+#     mode: '0777'
+#   #delegate_to: localhost
+
+# - name: convert user Excel file to CSV Files
+#   convert:
+#     filename: "./files/files_wip/new_test.xlsx"
+#   register: result
+    
+# - name: generate YML files from CSV files
+#   include_tasks: unit_copy_tasks.yml
+#   loop: "{{result.msg}}"
+
+# - ansible.builtin.assemble:
+#     src: ./vars/vars_wip 
+#     regexp: 'yml$'
+#     dest: ./vars/new_test.yml
+#     delimiter: '############################################################################################################################################'

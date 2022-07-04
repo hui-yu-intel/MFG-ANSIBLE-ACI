@@ -1,0 +1,11 @@
+---
+# tasks file for create_bfdIfP
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute createbfdIfP
+- include_tasks: "{{repository_path}}/post_query_aci_tenant.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_l3out.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_switch_policy_leaf_profile.yml"
+# - include_tasks: "{{repository_path}}/pre_query_bfdIfP.yml"
+- include_tasks: "{{repository_path}}/create_bfdIfP.yml"
+- include_tasks: "{{repository_path}}/post_query_bfdIfP.yml"

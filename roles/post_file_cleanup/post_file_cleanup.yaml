@@ -1,0 +1,10 @@
+- name: File CleanUp and Processing
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+
+  roles:
+  - pre_file_processing
+  - post_file_cleanup

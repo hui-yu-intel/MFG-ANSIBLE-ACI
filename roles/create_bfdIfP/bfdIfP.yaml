@@ -1,0 +1,44 @@
+---
+
+########################################################################
+#It will Attach BFD Interface Policy to Node Interface Profiles
+#Owner: Hui Yu
+#Prerequisites: aci_tenant,aci_l3out,aci_switch_policy_leaf_profile,aci_interface_policy_leaf_profile
+########################################################################
+
+- name: File CleanUp and Processing before the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml  
+
+
+  roles:
+  - pre_file_processing
+  - validate_apic_id
+
+- name: tasks related to ACI  
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+
+  roles:
+  - create_snapshot_before_change
+
+
+  #related to the role/project
+  - bfdIfP
+  - create_snapshot_after_change
+
+- name: File CleanUp after the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+  
+  roles:
+  - post_file_cleanup

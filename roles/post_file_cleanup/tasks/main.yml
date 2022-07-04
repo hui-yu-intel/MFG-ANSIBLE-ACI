@@ -1,0 +1,5 @@
+---
+# tasks file for post_file_cleanup
+
+#Execute File Cleanup
+- include_tasks: "{{repository_path}}/file_cleanup.yml"

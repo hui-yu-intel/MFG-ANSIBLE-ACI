@@ -1,0 +1,53 @@
+---
+- name: File CleanUp and Processing before the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml  
+
+
+  roles:
+  - pre_file_processing
+  - validate_apic_id
+
+- name: tasks related to ACI  
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+
+  roles:
+  - create_snapshot_before_change
+
+
+  #related to the role/project
+  - create_aci_fabric_node
+  - create_aci_switch_policy_leaf_profile
+  - create_aci_switch_leaf_selector
+  - create_aci_interface_policy_leaf_profile
+  - create_aci_interface_policy_leaf_policy_group_nonvpc
+  - create_aci_access_port_to_interface_policy_leaf_profile
+  - create_l3extLNodeP
+  - create_l3extRsNodeL3OutAtt
+  - create_l3extLIfP
+  - create_l3extRsPathL3OutAtt
+  # - create_aci_l3out_extepg
+  - create_aci_l3out_extsubnet
+  - create_l3extInstP
+  - create_bfdIfPol
+  - create_bfdIfP
+  - create_eigrpIfPol
+  - create_eigrpIfP
+  - create_snapshot_after_change
+
+- name: File CleanUp after the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+  
+  roles:
+  - post_file_cleanup

@@ -1,0 +1,10 @@
+---
+# tasks file for delete_snmpTrapDestv2
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute delete_snmpTrapDestv2
+# - include_tasks: "{{repository_path}}/post_query_snmpTrapDestv2.yml"
+- include_tasks: "{{repository_path}}/delete_snmpTrapDestv2.yml"
+# - include_tasks: "{{repository_path}}/pre_query_snmpTrapDestv2.yml"
+
+

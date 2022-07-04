@@ -1,0 +1,38 @@
+---
+
+- name: Create snapshot
+  cisco.aci.aci_config_snapshot:
+    hostname: '{{ inventory_hostname }}'
+    username: '{{ username }}'
+    password: '{{ password }}'
+    validate_certs: no
+    export_policy: 'config_backup'
+    max_count: 10
+    description: "{{snapshot_description}}"
+  delegate_to: localhost
+
+- name: Query configexp
+  cisco.aci.aci_rest:
+    hostname: '{{ inventory_hostname }}'
+    username: '{{ username }}'
+    password: '{{ password }}'
+    validate_certs: no
+    method: get
+    path: /api/node/mo/uni/backupst/jobs-[uni/fabric/configexp-config_backup].json
+  delegate_to: localhost
+  register: configexp
+
+- name: Query job
+  cisco.aci.aci_rest:
+    hostname: '{{ inventory_hostname }}'
+    username: '{{ username }}'
+    password: '{{ password }}'
+    validate_certs: no
+    method: get
+    path: /api/node/mo/uni/backupst/jobs-[uni/fabric/configexp-config_backup]/run-{{configexp.imdata[0].configJobCont.attributes.lastJobName}}.json
+  delegate_to: localhost
+  register: backupjob
+  retries: 30
+  delay: 2
+  until: backupjob.imdata[0].configJob.attributes.operSt != "running"
+  failed_when: backupjob.imdata[0].configJob.attributes.operSt != "success"

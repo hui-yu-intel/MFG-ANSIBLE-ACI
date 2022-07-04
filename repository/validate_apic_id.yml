@@ -1,0 +1,41 @@
+- name: Assert the right site
+  assert:
+    that:
+      - "site == item.site"
+    success_msg: "site matches: rundeck = {{site}}  file={{item.site}}"
+    fail_msg: "You choose the wrong site! rundeck= {{site}} file={{item.site}}"
+  with_items: '{{validate_apic_id}}'
+
+- name: Assert the right environment
+  assert:
+    that:
+      - "env == item.environment"
+    success_msg: "environment matches: rundeck = {{env}}  file={{item.environment}}"
+    fail_msg: "You choose the wrong environment! rundeck= {{env}} file={{item.environment}}"
+  with_items: '{{validate_apic_id}}'
+
+- name: Assert the right function
+  assert:
+    that:
+      - "function == item.function"
+    success_msg: "function matches: rundeck = {{function}}  file={{item.function}}"
+    fail_msg: "You choose the wrong function! rundeck= {{function}} file={{item.function}}"
+  with_items: '{{validate_apic_id}}'
+
+- name: Assert the right factory
+  assert:
+    that:
+      - item.factory == ""
+    success_msg: "factory matches: rundeck = {{factory}}  file={{item.factory}}"
+    fail_msg: "You choose the wrong factory! rundeck= {{factory}} file={{item.factory}}"
+  with_items: '{{validate_apic_id}}'
+  when: factory =='n/a'
+
+- name: Assert the right factory
+  assert:
+    that:
+      - "factory == item.factory"
+    success_msg: "factory matches: rundeck = {{factory}}  file={{item.factory}}"
+    fail_msg: "You choose the wrong factory! rundeck= {{factory}} file={{item.factory}}"
+  with_items: '{{validate_apic_id}}'
+  when: factory !='n/a'

@@ -1,0 +1,70 @@
+# Do file clean-up.  Copy user csv file and yaml vars file to old_vars directory so keep main vars directory clean.
+---
+  - name: Create /vars/old_vars directory if it does not exist
+    file:
+      path: "{{path}}/vars/old_vars"
+      state: directory
+      mode: '0777'
+  
+  - name: Create /vars/vars_wip directory if it does not exist
+    file:
+      path: "{{path}}/vars/vars_wip"
+      state: directory
+      mode: '0777'
+
+  - name: Create /files/files_wip directory if it does not exist
+    file:
+      path: "{{path}}/files/files_wip"
+      state: directory
+      mode: '0777'
+
+# Move vars files to the old_vars directory for logging reference.
+  - name: Copy all files matching file extenstion
+    copy:
+      src: "{{ item }}"
+      dest: "{{path}}/vars/old_vars/"
+      #owner: "root"
+      #mode: 0777
+    with_fileglob:
+    - "{{path}}/vars/*.yml"
+
+# Delete old files to prepare for next Rundeck job.
+  - name: Locating all files in files in the vars directory
+    find:
+      path: "{{path}}/vars/"
+    register: cleanup
+    #ignore_errors: true
+
+  - name: Delete old vars files
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    with_items: "{{ cleanup.files }}"
+    #ignore_errors: true  
+
+  - name: Locating all files in files in the vars_wip directory
+    find:
+      path: "{{path}}/vars/vars_wip/"
+    register: cleanup
+    #ignore_errors: true
+
+  - name: Delete old vars_wip files
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    with_items: "{{ cleanup.files }}"
+    #ignore_errors: true  
+
+  - name: Locating all files in files in the files_wip directory
+    find:
+      path: "{{path}}/files/files_wip/"
+    register: cleanup
+    #ignore_errors: true
+
+  - name: Delete old files_wip files
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    with_items: "{{ cleanup.files }}"
+    #ignore_errors: true  
+...

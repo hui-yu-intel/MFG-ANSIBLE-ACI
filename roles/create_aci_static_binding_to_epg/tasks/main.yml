@@ -1,0 +1,12 @@
+---
+# tasks file for create_aci_static_binding_to_epg
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_aci_static_binding_to_epg
+- include_tasks: "{{repository_path}}/post_query_aci_tenant.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_ap.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_epg.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_interface_policy_leaf_policy_group.yml"
+- include_tasks: "{{repository_path}}/pre_query_aci_static_binding_to_epg.yml"
+- include_tasks: "{{repository_path}}/create_aci_static_binding_to_epg.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_static_binding_to_epg.yml"

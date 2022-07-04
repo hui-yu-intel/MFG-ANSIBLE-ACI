@@ -1,0 +1,8 @@
+---
+# tasks file for create_snapshot_before_change
+
+
+#Execute create_snapshot.yml
+- include_tasks: "{{repository_path}}/create_snapshot.yml"
+  vars:
+    snapshot_description: "Backups taken before the execution of {{ playbook_dir.split('/')[-1] }} by {{ username }}."

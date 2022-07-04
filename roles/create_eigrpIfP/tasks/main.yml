@@ -1,0 +1,11 @@
+---
+# tasks file for create_eigrpIfP
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_eigrpIfP
+# - include_tasks: "{{repository_path}}/pre_query_eigrpIfP.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_l3out.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_tenant.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_switch_policy_leaf_profile.yml"
+- include_tasks: "{{repository_path}}/create_eigrpIfP.yml"
+- include_tasks: "{{repository_path}}/post_query_eigrpIfP.yml"

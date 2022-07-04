@@ -1,0 +1,9 @@
+---
+# tasks file for create_aci_domain_to_encap_pool
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_aci_domain_to_encap_pool
+# - include_tasks: "{{repository_path}}/pre_query_aci_domain_to_encap_pool.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_vlan_pool.yml"
+- include_tasks: "{{repository_path}}/create_aci_domain_to_encap_pool.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_domain_to_encap_pool.yml"

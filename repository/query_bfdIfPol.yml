@@ -1,0 +1,20 @@
+  - name: Query BFD Interface Policy for User Tenant
+    aci_rest:
+      hostname: '{{ inventory_hostname }}'
+      username: '{{ username }}'
+      password: '{{ password }}'
+      validate_certs: no
+      path: /api/node/mo/uni/tn-{{ item.tenantName }}.json?query-target=children&target-subtree-class=bfdIfPol&query-target-filter=eq(bfdIfPol.name,"bfd_intPol")
+      method: get
+    register: query_result
+    with_items: "{{ bfdIfPol }}"
+    #ignore_errors: yes
+    delegate_to: localhost
+
+  - name: Assert the bfd interface profile
+    assert:
+      that:
+      - item.imdata!=[]
+      success_msg: "bfd interface profile exists in the Fabric."
+      fail_msg: "bfd interface profile does NOT exist in the Fabric."
+    with_items: "{{query_result.results}}"

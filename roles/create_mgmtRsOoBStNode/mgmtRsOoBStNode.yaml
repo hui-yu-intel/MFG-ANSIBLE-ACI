@@ -1,0 +1,44 @@
+---
+
+########################################################################
+#Configure Switch OOB Mgmt IP Addressing
+#Owner: Hui Yu
+#Prerequisites: N/A
+########################################################################
+
+- name: File CleanUp and Processing before the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml  
+
+
+  roles:
+  - pre_file_processing
+  - validate_apic_id
+
+- name: tasks related to ACI  
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+
+  roles:
+  - create_snapshot_before_change
+
+
+  #related to the role/project
+  - create_mgmtRsOoBStNode
+  - create_snapshot_after_change
+
+- name: File CleanUp after the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+  
+  roles:
+  - post_file_cleanup

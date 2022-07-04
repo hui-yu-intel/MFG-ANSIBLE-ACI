@@ -1,0 +1,9 @@
+---
+# tasks file for create_vzFilter
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_vzFilter
+# - include_tasks: "{{repository_path}}/pre_query_vzFilter.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_tenant.yml"
+- include_tasks: "{{repository_path}}/create_vzFilter.yml"
+- include_tasks: "{{repository_path}}/post_query_vzFilter.yml"

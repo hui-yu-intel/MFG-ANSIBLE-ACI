@@ -1,0 +1,48 @@
+---
+- name: File CleanUp and Processing before the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml  
+
+
+  roles:
+  - pre_file_processing
+  - validate_apic_id
+
+- name: tasks related to ACI  
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+
+  roles:
+  - create_snapshot_before_change
+
+
+  #related to the role/project
+  - create_aci_epg
+  - create_fvAEPg
+  - create_l3extInstP
+  - create_aci_filter
+  - create_vzFilter
+  - create_aci_contract
+  - create_aci_contract_subject
+  - create_vzBrCP
+  - create_l3extInstP_fvRsProv
+  - create_l3extInstP_fvRsCons
+  - create_fvRsProv
+  - create_fvRsCons
+  - create_snapshot_after_change
+
+- name: File CleanUp after the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+  
+  roles:
+  - post_file_cleanup

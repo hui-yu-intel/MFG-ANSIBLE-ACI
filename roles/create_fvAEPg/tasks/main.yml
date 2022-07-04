@@ -1,0 +1,10 @@
+---
+# tasks file for create_fvAEPg
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_fvAEPg
+# - include_tasks: "{{repository_path}}/pre_query_fvAEPg.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_tenant.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_ap.yml"
+- include_tasks: "{{repository_path}}/create_fvAEPg.yml"
+- include_tasks: "{{repository_path}}/post_query_fvAEPg.yml"

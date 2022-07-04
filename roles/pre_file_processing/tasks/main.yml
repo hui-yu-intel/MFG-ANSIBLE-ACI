@@ -1,0 +1,9 @@
+---
+# tasks file for pre_file_processing
+
+    #pre_tasks:
+#Execute File Cleanup
+- include_tasks: "{{repository_path}}/file_cleanup.yml"
+
+#Execute Var Creator
+- include_tasks: "{{repository_path}}/var_creator2.yml"

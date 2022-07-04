@@ -1,0 +1,9 @@
+---
+# tasks file for create_vmmCtrlrP
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_vmmCtrlrP
+# - include_tasks: "{{repository_path}}/pre_query_vmmCtrlrP.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_vmm_domain.yml"
+- include_tasks: "{{repository_path}}/create_vmmCtrlrP.yml"
+- include_tasks: "{{repository_path}}/post_query_vmmCtrlrP.yml"

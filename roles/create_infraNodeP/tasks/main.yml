@@ -1,0 +1,10 @@
+---
+# tasks file for create_infraNodeP
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_infraNodeP
+- include_tasks: "{{repository_path}}/post_query_aci_switch_policy_leaf_profile.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_interface_policy_leaf_profile.yml"
+# - include_tasks: "{{repository_path}}/pre_query_infraNodeP.yml"
+- include_tasks: "{{repository_path}}/create_infraNodeP.yml"
+# - include_tasks: "{{repository_path}}/post_query_infraNodeP.yml"

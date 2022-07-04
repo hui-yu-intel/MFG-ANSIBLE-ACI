@@ -1,0 +1,9 @@
+---
+# tasks file for create_aci_interface_policy_leaf_policy_group_nonvpc
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute createaci_interface_policy_leaf_policy_group_nonvpc
+- include_tasks: "{{repository_path}}/post_query_aci_aep.yml"
+- include_tasks: "{{repository_path}}/pre_query_aci_interface_policy_leaf_policy_group_nonvpc.yml"
+- include_tasks: "{{repository_path}}/create_aci_interface_policy_leaf_policy_group_nonvpc.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_interface_policy_leaf_policy_group_nonvpc.yml"

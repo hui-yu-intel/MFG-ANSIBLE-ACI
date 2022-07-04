@@ -1,0 +1,30 @@
+# ---
+# - hosts: localhost
+# #   gather_facts: false
+#   tasks:
+- set_fact:
+    sheet_name="{{item}}"
+# - debug:
+#     var: sheet_name
+
+###SWITCHES 1a_fabric_discovery.yml
+- read_csv:
+    path: "{{path}}/files/files_wip/{{sheet_name}}.csv"
+    key: "number"
+  register: reg_item
+- debug:
+    var=reg_item  
+- copy:    
+    content:  "###{{sheet_name}}"
+    dest: "{{path}}/vars/vars_wip/{{sheet_name}}.yml" 
+
+- lineinfile:
+    path: "{{path}}/vars/vars_wip/{{sheet_name}}.yml"    
+    line: "{{sheet_name}}:" 
+    state: present
+- lineinfile:  
+    path: "{{path}}/vars/vars_wip/{{sheet_name}}.yml"
+    line:  "- {{item.value}} "
+    state: present
+    backup: no
+  loop: "{{ reg_item.dict|dict2items }}"  

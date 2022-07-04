@@ -1,0 +1,8 @@
+---
+# tasks file for validate_apic_id
+
+- include_vars: 
+    file: "{{path}}/vars/vars_wip/validate_apic_id.yml"
+
+# Execute validate_apic_id.yml
+- include_tasks: "{{repository_path}}/validate_apic_id.yml"

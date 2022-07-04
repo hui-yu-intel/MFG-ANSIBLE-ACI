@@ -1,0 +1,63 @@
+---
+- name: File CleanUp and Processing before the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml  
+
+
+  roles:
+  - pre_file_processing
+  - validate_apic_id
+
+- name: tasks related to ACI  
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+
+  roles:
+  - create_snapshot_before_change
+
+
+  #related to the role/project
+  - create_aci_vlan_pool
+  - create_aci_vlan_pool_encap_block
+  - create_aci_aep
+  - create_aci_interface_policy_leaf_policy_group
+  - create_aci_access_port_to_interface_policy_leaf_profile
+  - create_aci_access_port_block_to_access_port
+  - create_aci_vmm_domain
+  - create_aci_vmm_credential
+  - create_vmmCtrlrP
+  - create_aci_domain_to_encap_pool
+  - create_aci_aep_to_vmm_domain
+  - create_vmmDomP
+  - create_aci_epg_to_vmm_domain
+
+- name: tasks related to ACI  
+  hosts: all
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+  tasks:  
+    - name: delay  
+      pause:
+        seconds: 30
+    - name: role role
+      include_role:
+        name: create_fvRsDomAtt
+
+
+- name: File CleanUp after the Change
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - ../../vars/global.yaml
+  
+  roles:
+  - post_file_cleanup

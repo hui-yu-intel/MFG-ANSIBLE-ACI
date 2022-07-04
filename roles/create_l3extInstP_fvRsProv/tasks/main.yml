@@ -1,0 +1,11 @@
+---
+# tasks file for create_l3extInstP_fvRsProv
+- include_vars:
+   dir: "{{path}}/vars/vars_wip"
+#Execute create_l3extInstP_fvRsProv
+# - include_tasks: "{{repository_path}}/pre_query_l3extInstP_fvRsProv.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_tenant.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_ap.yml"
+- include_tasks: "{{repository_path}}/post_query_aci_l3out_extepg.yml"
+- include_tasks: "{{repository_path}}/create_l3extInstP_fvRsProv.yml"
+- include_tasks: "{{repository_path}}/post_query_l3extInstP_fvRsProv.yml"
