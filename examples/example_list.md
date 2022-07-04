@@ -11,8 +11,8 @@
 | create_aci_bd_to_l3out                                    |   | X |   |   |   |   |   | X |   |   |
 | create_aci_contract                                       |   |   | X |   |   |   |   |   |   |   |
 | create_aci_contract_subject                               |   |   | X |   |   |   |   |   |   |   |
-| create_aci_domain                                         | X | X |   | X |   |   |   |   |   |   |
-| create_aci_domain_to_encap_pool                           |   |   |   |   |   |   |   |   |   |   |
+| create_aci_domain                                         | X | X |   |   |   |   |   |   |   |   |
+| create_aci_domain_to_encap_pool                           |   |   |   | X |   |   |   |   |   |   |
 | create_aci_domain_to_vlan_pool                            |   | X |   |   |   |   |   |   |   |   |
 | create_aci_epg                                            |   |   | X |   |   |   |   | X |   |   |
 | create_aci_epg_to_domain                                  |   |   |   |   |   |   |   | X |   |   |
@@ -23,8 +23,8 @@
 | create_aci_interface_policy_leaf_policy_group_nonvpc      |   |   |   |   | X |   |   |   |   |   |
 | create_aci_interface_policy_leaf_profile                  |   |   |   |   | X |   | X |   |   |   |
 | create_aci_l3out                                          | X |   |   |   |   |   |   |   |   |   |
-| create_aci_l3out_extepg                                   |   |   |   |   |   |   |   |   |   |   |
-| create_aci_l3out_extsubnet                                |   |   |   |   |   |   |   |   |   |   |
+| create_aci_l3out_extepg                                   |   |   |   |   | X |   |   |   |   |   |
+| create_aci_l3out_extsubnet                                |   |   |   |   | X |   |   |   |   |   |
 | create_aci_static_binding_to_epg                          |   |   |   |   |   |   |   |   | X |   |
 | create_aci_switch_leaf_selector                           |   |   |   |   | X |   | X |   |   |   |
 | create_aci_switch_policy_leaf_profile                     |   |   |   |   | X |   | X |   |   |   |
