@@ -1,5 +1,5 @@
 |roles|summary|prerequisite role(s)|
-| :---         |     :---:      | :---:      |
+| :---         |     :---      | :---      |
 |create_aci_access_port_block_to_access_port|Create port blocks of Fabric interface policy leaf profile interface selectors on Cisco ACI fabrics|N/A|
 |create_aci_access_port_to_interface_policy_leaf_profile|Create Fabric interface policy leaf profile interface selectors on Cisco ACI fabrics|N/A|
 |create_aci_aep_to_domain|Bind AEPs to Physical or Virtual Domains on Cisco ACI fabrics|aci_domain|
