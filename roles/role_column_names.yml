@@ -1,0 +1,249 @@
+Task= create_aci_access_port_block_to_access_port.yml
+Sheet= aci_access_port_block_to_acce
+Columns= ['number', 'intProfileName', 'portNumber', 'policyGroupName']
+
+Task= create_aci_access_port_to_interface_policy_leaf_profile.yml
+Sheet= aci_access_port_to_interface_
+Columns= ['number', 'intProfileName', 'intType', 'portNumber', 'policyGroupName']
+
+Task= create_aci_aep_to_domain.yml
+Sheet= aci_aep_to_domain
+Columns= ['number', 'aaep', 'Dom', 'DomType']
+
+Task= create_aci_aep_to_vmm_domain.yml
+Sheet= aci_aep_to_domain
+Columns= ['number', 'aaep', 'Dom', 'DomType']
+
+Task= create_aci_aep.yml
+Sheet= aci_aep
+Columns= ['number', 'aaep']
+
+Task= create_aci_ap.yml
+Sheet= aci_ap
+Columns= ['number', 'tenantName', 'apName']
+
+Task= create_aci_bd_subnet.yml
+Sheet= aci_bd_subnet
+Columns= ['number', 'tenantName', 'bdName', 'bdSubnet', 'bdSubnetMask', 'bdSubnetScope']
+
+Task= create_aci_bd_to_l3out.yml
+Sheet= aci_bd_to_l3out
+Columns= ['number', 'tenantName', 'bdName', 'l3outName']
+
+Task= create_aci_bd.yml
+Sheet= aci_bd
+Columns= ['number', 'tenantName', 'bdName', 'vrfName']
+
+Task= create_aci_contract_subject.yml
+Sheet= aci_contract_subject
+Columns= ['number', 'tenant', 'ct_Name', 'sub_Name']
+
+Task= create_aci_contract.yml
+Sheet= aci_contract
+Columns= ['number', 'tenant', 'ct_Name', 'ct_nameAlias']
+
+Task= create_aci_domain_to_encap_pool.yml
+Sheet= aci_domain_to_encap_pool
+Columns= ['number', 'vmmDomainName', 'vlanPool']
+
+Task= create_aci_domain_to_vlan_pool.yml
+Sheet= aci_domain_to_vlan_pool
+Columns= ['number', 'Dom', 'DomType', 'vlanPool', 'vlanPoolAllMode']
+
+Task= create_aci_domain.yml
+Sheet= aci_domain
+Columns= ['number', 'Dom', 'DomType']
+
+Task= create_aci_epg_to_domain.yml
+Sheet= aci_epg_to_domain
+Columns= ['number', 'tenantName', 'apName', 'epgName', 'domainName']
+
+Task= create_aci_epg_to_vmm_domain.yml
+Sheet= aci_epg_to_domain
+Columns= ['number', 'tenantName', 'apName', 'epgName', 'domainName']
+
+Task= create_aci_epg.yml
+Sheet= aci_epg
+Columns= ['number', 'tenantName', 'bdName', 'apName', 'epgName', 'epgPrefGroup', 'epgIntraIso', 'epgProxyArp', 'epgDesc']
+
+Task= create_aci_fabric_node.yml
+Sheet= aci_fabric_node
+Columns= ['number', 'serial', 'nodeId', 'podId', 'switchName', 'switchRole']
+
+Task= create_aci_filter.yml
+Sheet= aci_filter
+Columns= ['number', 'FilterName', 'tenant']
+
+Task= create_aci_interface_policy_leaf_policy_group_nonvpc.yml
+Sheet= aci_interface_policy_leaf_pol
+Columns= ['number', 'policyGroupName', 'lag_type', 'portSpeed', 'aaepName']
+
+Task= create_aci_interface_policy_leaf_policy_group.yml
+Sheet= aci_interface_policy_leaf_pol
+Columns= ['number', 'policyGroupName', 'lag_type', 'portSpeed', 'portChannelPolicy', 'aaepName']
+
+Task= create_aci_interface_policy_leaf_profile.yml
+Sheet= aci_interface_policy_leaf_pro
+Columns= ['number', 'intProf', 'intProfDesc']
+
+Task= create_aci_l3out_extepg.yml
+Sheet= aci_l3out_extepg
+Columns= ['number', 'tenantName', 'l3outName', 'exepgName']
+
+Task= create_aci_l3out_extsubnet.yml
+Sheet= aci_l3out_extsubnet
+Columns= ['number', 'tenantName', 'l3outName', 'exepgName', 'epgNetwork']
+
+Task= create_aci_l3out.yml
+Sheet= aci_l3out
+Columns= ['number', 'tenantName', 'l3outName', 'l3OutdomainName', 'vrfName', 'routingProtocol', 'eigrp_AsNum']
+
+Task= create_aci_static_binding_to_epg.yml
+Sheet= aci_static_binding_to_epg
+Columns= ['number', 'tenantName', 'appProfileName', 'epgName', 'encapID', 'interfaceMode', 'interfaceType', 'policyGroupName', 'podID', 'leafID']
+
+Task= create_aci_switch_leaf_selector.yml
+Sheet= aci_switch_leaf_selector
+Columns= ['number', 'swProf', 'leaf_name', 'block', 'from', 'to']
+
+Task= create_aci_switch_policy_leaf_profile.yml
+Sheet= aci_switch_policy_leaf_profil
+Columns= ['number', 'swProf', 'swProfDesc']
+
+Task= create_aci_switch_policy_vpc_protection_group.yml
+Sheet= aci_switch_policy_vpc_protect
+Columns= ['number', 'vpcGroupName', 'id', 'switch1', 'switch2']
+
+Task= create_aci_tenant.yml
+Sheet= aci_tenant
+Columns= ['number', 'tenantName']
+
+Task= create_aci_vlan_pool_encap_block.yml
+Sheet= aci_vlan_pool_encap_block
+Columns= ['number', 'vlanDesc', 'vlanPool', 'vlanPoolAllMode', 'vlanAllMode', 'startVlan', 'endVlan']
+
+Task= create_aci_vlan_pool.yml
+Sheet= aci_vlan_pool
+Columns= ['number', 'vlanPool', 'vlanPoolAllMode']
+
+Task= create_aci_vmm_credential.yml
+Sheet= aci_vmm_credential
+Columns= ['number', 'vmmDomainName']
+
+Task= create_aci_vmm_domain.yml
+Sheet= aci_domain
+Columns= ['number', 'vmmDomainName']
+
+Task= create_aci_vrf.yml
+Sheet= aci_vrf
+Columns= ['number', 'vrfName', 'tenantName', 'vrfPrefGroup']
+
+Task= create_bfdIfPol.yml
+Sheet= bfdIfPol
+Columns= ['number', 'tenantName']
+
+Task= create_bfdIfP.yml
+Sheet= bfdIfP
+Columns= ['number', 'tenantName', 'l3outName', 'nodeProfile', 'intProfile']
+
+Task= create_dhcpLbl.yml
+Sheet= dhcpLbl
+Columns= ['number', 'tenantName', 'bdName', 'dhcpRelayName']
+
+Task= create_dhcpRelayP.yml
+Sheet= dhcpRelayP
+Columns= ['number', 'tenantName', 'dhcpRelayName', 'dhcpServer1', 'l3outName', 'dhcpExtEpg1', 'dhcpServer2', 'dhcpExtEpg2']
+
+Task= create_eigrpIfPol.yml
+Sheet= eigrpIfPol
+Columns= ['number', 'tenantName']
+
+Task= create_eigrpIfP.yml
+Sheet= eigrpIfP
+Columns= ['number', 'tenantName', 'l3outName', 'nodeProfile', 'intProfile']
+
+Task= create_fvAEPg.yml
+Sheet= fvAEPg
+Columns= ['number', 'tenantName', 'apName', 'epgName', 'Main_apName', 'Main_epgName']
+
+Task= create_fvRsCons.yml
+Sheet= fvRsCons
+Columns= ['number', 'tenant', 'apName', 'epgName', 'Consumed']
+
+Task= create_fvRsDomAtt.yml
+Sheet= fvRsDomAtt
+Columns= ['number', 'tenantName', 'apName', 'epgName', 'vmmDomainName', 'elagName']
+
+Task= create_fvRsProv.yml
+Sheet= fvRsProv
+Columns= ['number', 'tenant', 'apName', 'epgName', 'Provided']
+
+Task= create_infraNodeP.yml
+Sheet= infraNodeP
+Columns= ['number', 'swProf', 'intProf']
+
+Task= create_l3extInstP_fvRsCons.yml
+Sheet= l3extInstP
+Columns= ['number', 'tenant', 'extEpgName', 'Consumed']
+
+Task= create_l3extInstP_fvRsProv.yml
+Sheet= l3extInstP
+Columns= ['number', 'tenant', 'extEpgName', 'Provided']
+
+Task= create_l3extInstP.yml
+Sheet= l3extInstP
+Columns= ['number', 'tenantName', 'l3outName', 'exepgName']
+
+Task= create_l3extLIfP.yml
+Sheet= l3extLIfP
+Columns= ['number', 'tenantName', 'l3outName', 'nodeProfile', 'intProfile']
+
+Task= create_l3extLNodeP.yml
+Sheet= l3extLNodeP
+Columns= ['number', 'tenantName', 'l3outName', 'nodeProfile', 'nodeProfileDesc']
+
+Task= create_l3extRsNodeL3OutAtt.yml
+Sheet= l3extRsNodeL3OutAtt
+Columns= ['number', 'tenantName', 'l3outName', 'nodeProfile', 'podID', 'nodeID', 'routerID']
+
+Task= create_l3extRsPathL3OutAtt.yml
+Sheet= l3extRsPathL3OutAtt
+Columns= ['number', 'tenantName', 'l3outName', 'nodeProfile', 'intProfile', 'podID', 'nodeID', 'interfaceID', 'interfaceIP', 'interfaceMTU']
+
+Task= create_mgmtRsOoBStNode.yml
+Sheet= mgmtRsOoBStNode
+Columns= ['number', 'pod', 'node_id', 'podId', 'nodeId', 'addr', 'gw']
+
+Task= create_snapshot.yml
+Task= create_snmpCommunityPv3.yml
+Sheet= snmpCommunityP
+Columns= ['number', 'snmpPolicy']
+
+Task= create_snmpTrapDestv3.yml
+Sheet= snmpTrapDest
+Columns= ['number', 'snmpDestGrp', 'snmpV3TrapIp']
+
+Task= create_snmpTrapFwdServerPv3.yml
+Sheet= snmpTrapFwdServerP
+Columns= ['number', 'snmpPolicy', 'snmpV3TrapIp']
+
+Task= create_snmpUserPv3.yml
+Sheet= snmpUserP
+Columns= ['number', 'snmpPolicy', 'snmpV2string']
+
+Task= create_vmmCtrlrP.yml
+Sheet= vmmCtrlrP
+Columns= ['number', 'vmmDomainName', 'vCenterName', 'vCenterIP', 'vCenterDataCenter']
+
+Task= create_vmmDomP.yml
+Sheet= vmmDomP
+Columns= ['number', 'vmmDomainName', 'elagName']
+
+Task= create_vzBrCP.yml
+Sheet= vzBrCP
+Columns= ['number', 'tenant', 'ct_Name', 'sub_Name', 'fil_action', 'fil_directives', 'fil_name']
+
+Task= create_vzFilter.yml
+Sheet= vzFilter
+Columns= ['number', 'tenant', 'FilterName', 'dFromPort', 'dToPort', 'EntryName', 'prot', 'sFromPort', 'sToPort']
+
